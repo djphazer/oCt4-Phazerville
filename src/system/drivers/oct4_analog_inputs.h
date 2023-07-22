@@ -19,6 +19,7 @@
 
 #include <array>
 #include <cstddef>
+#include <cstdint>
 
 #include "util/util_macros.h"
 
