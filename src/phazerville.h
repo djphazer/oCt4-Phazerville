@@ -18,11 +18,16 @@
 #include "api/api_processor.h"
 #include "api/api_menu.h"
 #include "system/ui/ui_event_dispatcher.h"
+#include "hemisphere.h"
 
 namespace oct4 {
+namespace phz {
 
 class PhazervilleApp : public api::Processor, public api::Menu, public UI::EventDispatch<PhazervilleApp> {
 public:
+  PhazervilleApp() {}
+  ~PhazervilleApp() {}
+
   static constexpr util::FourCC::value_type fourcc = "PHZ1"_4CCV;
 
   // PROCESSOR
@@ -46,6 +51,8 @@ protected:
 private:
   uint32_t ticks_ = 0;
   int state_ = 0;
+
 };
 
+}  // namespace phz
 }  // namespace oct4

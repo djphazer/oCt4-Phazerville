@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "phazerville.h"
-
-namespace oct4 {
-
 /* Phazerville Suite Framework for T4
  *
  * Building the basic foundation for porting Hemisphere applets and such
  */
+#include "phazerville.h"
+
+namespace oct4 {
+namespace phz {
 
 static PhazervilleApp instance;
 
@@ -58,7 +58,12 @@ void PhazervilleApp::HandleEvent(const UI::Event &event)
 // graphics
 void PhazervilleApp::Draw(weegfx::Graphics &gfx) const
 {
-    (void)gfx;
+    gfx.setPrintPos(1, 2);
+    gfx.print("Phazerville Suite T4 Test");
+    gfx.drawLine(0, 10, 62, 10);
+    gfx.drawLine(0, 11, 62, 11);
+
 }
 
+}  // namespace phz
 }  // namespace oct4
