@@ -50,7 +50,7 @@ void Bootscreen::HandleEvent(const UI::Event &event)
         SystemCore::display.driver().CmdDisplayOn(true);
         SystemCore::event_dispatcher.AddTimer(UI::TIMER_BOOTSCREEN, kBootscreenTimeoutMs);
         break;
-      case 1: SystemCore::Execute("TEST"_4CC); break;
+      case 1: SystemCore::Execute("PHZ1"_4CC); break;
       default: break;
     }
   }
