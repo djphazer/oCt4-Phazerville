@@ -44,6 +44,10 @@ public:
         gfx.printf("USB_SERIAL");
         lines.nl();
 #endif
+#ifdef USB_MIDI
+        gfx.printf("USB_MIDI");
+        lines.nl();
+#endif
 #ifdef ENABLE_SERIAL_DEBUG
         gfx.printf("ENABLE_SERIAL_DEBUG");
         lines.nl();
