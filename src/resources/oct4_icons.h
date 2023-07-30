@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef OCT4_ICONS_H_
-#define OCT4_ICONS_H_
+#pragma once
 
 #include <cstdint>
 
@@ -31,5 +30,3 @@ extern const Icon8 unit_khz;
 
 }  // namespace icons
 }  // namespace oct4
-
-#endif  // OCT4_ICONS_H_

@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef OCF4_UI_MENU_H_
-#define OCF4_UI_MENU_H_
+#pragma once
 
 #include "system/ui/ui_event.h"
 #include "util/util_fourcc.h"
@@ -52,5 +51,3 @@ public:
 
 }  // namespace api
 }  // namespace oct4
-
-#endif  // OCF4_UI_MENU_H_

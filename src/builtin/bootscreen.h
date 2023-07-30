@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef BUILTIN_BOOTSCREEN_H_
-#define BUILTIN_BOOTSCREEN_H_
+#pragma once
 
 #include "api/api_menu.h"
 
@@ -41,5 +40,3 @@ private:
 };
 
 }  // namespace oct4
-
-#endif  // BUILTIN_BOOTSCREEN_H_

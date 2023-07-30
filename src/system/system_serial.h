@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef SYSTEM_SERIAL_H_
-#define SYSTEM_SERIAL_H_
+#pragma once
 
 #include <cstdint>
 
@@ -58,5 +57,3 @@ void wait_available(uint32_t ms);
   do {                    \
   } while (0)
 #endif
-
-#endif  // SYSTEM_SERIAL_H_

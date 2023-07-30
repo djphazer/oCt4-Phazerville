@@ -14,13 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef UTIL_MACROS_H_
-#define UTIL_MACROS_H_
+#pragma once
 
 #define DELETE_COPY_ASSIGN(TypeName)   \
   TypeName(const TypeName &) = delete; \
   void operator=(const TypeName &) = delete
 
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof(x[0]))
-
-#endif  // UTIL_MACROS_H_

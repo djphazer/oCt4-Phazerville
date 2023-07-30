@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef OCT4_GPIO_PINS_H_
-#define OCT4_GPIO_PINS_H_
+#pragma once
 
 // NOTE don't implement FLIP_180 here because of MUX/XBAR etc.
 
@@ -46,5 +45,3 @@
 
 #define PIN_ENCL_A 22
 #define PIN_ENCL_B 21
-
-#endif  // OCT4_GPIO_PINS_H_

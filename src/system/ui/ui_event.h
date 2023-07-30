@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef UI_EVENT_H_
-#define UI_EVENT_H_
+#pragma once
 
 #include <cstdint>
 
@@ -65,5 +64,3 @@ struct Event {
 #define DEBUG_EVENT(ctx, e)                                                                  \
   SERIAL_DEBUG(#ctx " {type=%#02x, control=%#02x, value=%ld, ticks=%lu}", e.type, e.control, \
                e.value, e.ticks)
-
-#endif  // UTIL_EVENT_H_

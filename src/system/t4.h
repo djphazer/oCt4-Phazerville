@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef T4_H_
-#define T4_H_
+#pragma once
 
 // Gah
 #pragma GCC diagnostic push
@@ -61,5 +60,3 @@ public:
 };
 
 };  // namespace t4
-
-#endif  // T4_H_

@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef DRIVERS_GPIO_H_
-#define DRIVERS_GPIO_H_
+#pragma once
 
 #include "oct4_gpio_pins.h"
 #include "system/t4.h"
@@ -106,5 +105,3 @@ struct ActiveHigh {
 
 }  // namespace drivers
 }  // namespace oct4
-
-#endif  // DRIVERS_GPIO_H_

@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef HWTEST_GFX_H_
-#define HWTEST_GFX_H_
+#pragma once
 
 #include "builtin/hwtest_plugin.h"
 
@@ -33,5 +32,3 @@ private:
   uint32_t tick_ = 0;
 };
 }  // namespace oct4
-
-#endif  // HWTEST_GFX_H_

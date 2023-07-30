@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef UTIL_REGISTRY_IMPL_H_
-#define UTIL_REGISTRY_IMPL_H_
+#pragma once
 
 template <typename TBase, size_t num_entries>
 typename StaticTypeRegistry<TBase, num_entries>::Registry &
@@ -63,5 +62,3 @@ void StaticTypeRegistry<TBase, num_entries>::PrintRegistry()
     PrintRegistryEntry({TBase::registry_fourcc}, {entry.fourcc}, entry.instance,
                        (const void *)entry.factory);
 }
-
-#endif  // UTIL_REGISTRY_IMPL_H_

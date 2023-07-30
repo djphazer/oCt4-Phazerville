@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef UI_EVENT_DISPATCHER_H_
-#define UI_EVENT_DISPATCHER_H_
+#pragma once
 
 #include "ui_event.h"
 
@@ -68,5 +67,3 @@ protected:
 #define EVENT_DISPATCH_DEFAULT_DEFINE(cls) const cls::EventHandler cls::event_handlers_[] =
 
 #define EVENT_DISPATCH_HANDLERS(cls, name) const cls::EventHandler cls::name[] =
-
-#endif  // UI_EVENT_DISPATCHER_H_

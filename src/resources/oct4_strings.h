@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef OCT4_STRINGS_H_
-#define OCT4_STRINGS_H_
+#pragma once
 
 namespace oct4 {
 namespace strings {
@@ -27,5 +26,3 @@ extern const char* const BUILD_TAG;
 }  // namespace strings
 
 };  // namespace oct4
-
-#endif  // OCT4_STRINGS_H_

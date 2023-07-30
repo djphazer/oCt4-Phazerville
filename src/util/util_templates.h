@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef UTIL_TEMPLATES_H_
-#define UTIL_TEMPLATES_H_
+#pragma once
 
 #include <array>
 #include <tuple>
@@ -70,5 +69,3 @@ std::array<T, std::tuple_size<Tuple>::value> tuple_to_ptr_array(Tuple &tuple)
 }
 
 }  // namespace util
-
-#endif  // UTIL_TEMPLATES_H_

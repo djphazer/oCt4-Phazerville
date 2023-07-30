@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef GFXTOOLS_H_
-#define GFXTOOLS_H_
+#pragma once
 
 #include "weegfx/weegfx.h"
 
@@ -36,5 +35,3 @@ struct PrintLines {
   weegfx::Graphics &gfx_;
 };
 }  // namespace gfxtools
-
-#endif  // GFXTOOLS_H_

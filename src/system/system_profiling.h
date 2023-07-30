@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef SYSTEM_PROFILING_H_
-#define SYSTEM_PROFILING_H_
+#pragma once
 
 #include <cstdint>
 #include <limits>
@@ -100,5 +99,3 @@ private:
 };
 
 };  // namespace profiling
-
-#endif  // SYSTEM_PROFILING_H_

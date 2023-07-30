@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef DRIVERS_OLED_SSD1306_SPI_H_
-#define DRIVERS_OLED_SSD1306_SPI_H_
+#pragma once
 
 #include "system/drivers/oct4_spi.h"
 #include "system/drivers/ssd1306.h"
@@ -81,5 +80,3 @@ protected:
 
 }  // namespace drivers
 }  // namespace oct4
-
-#endif  // DRIVERS_OLED_SSD1306_SPI_H_

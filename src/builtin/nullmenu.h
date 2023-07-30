@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef NULLMENU_H_
-#define NULLMENU_H_
+#pragma once
 
 #include "api/api_menu.h"
 
@@ -34,5 +33,3 @@ public:
 };
 
 }  // namespace oct4
-
-#endif  // NULLMENU_H_

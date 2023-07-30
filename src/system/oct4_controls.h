@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef OCT4_CONTROLS_H_
-#define OCT4_CONTROLS_H_
+#pragma once
 
 #include "util/util_encoder.h"
 #include "util/util_macros.h"
@@ -48,5 +47,3 @@ public:
 };
 
 }  // namespace oct4
-
-#endif  // OCT4_CONTROLS_H_

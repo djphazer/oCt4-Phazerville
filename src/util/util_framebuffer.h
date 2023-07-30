@@ -14,9 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef UTIL_FRAMEBUFFER_H_
-#define UTIL_FRAMEBUFFER_H_
-
+#pragma once
 #include <cstddef>
 
 #include "util/util_macros.h"
@@ -89,5 +87,3 @@ private:
 };
 
 }  // namespace util
-
-#endif  // UTIL_FRAMEBUFFER_H_

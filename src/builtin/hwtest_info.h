@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef HWTEST_INFO_H_
-#define HWTEST_INFO_H_
+#pragma once
 
 #include "hwtest_plugin.h"
 #include "resources/oct4_strings.h"
@@ -60,5 +59,3 @@ public:
 };
 
 }  // namespace oct4
-
-#endif  // HWTEST_INFO_H_

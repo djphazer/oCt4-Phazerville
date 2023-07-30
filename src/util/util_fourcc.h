@@ -14,9 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef UTIL_FOURCC_H_
-#define UTIL_FOURCC_H_
-
+#pragma once
 #include <cstddef>
 #include <cstdint>
 
@@ -83,4 +81,3 @@ constexpr util::FourCC operator"" _4CC(const char *s, size_t len)
 {
   return util::FourCC::FromString(s, len);
 }
-#endif  // UTIL_FOURCC_H_

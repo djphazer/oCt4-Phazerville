@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef OCT4_SPI_H_
-#define OCT4_SPI_H_
+#pragma once
 
 #include <cstddef>
 
@@ -72,5 +71,3 @@ private:
 
 }  // namespace drivers
 }  // namespace oct4
-
-#endif  // OCT4_SPI_H_

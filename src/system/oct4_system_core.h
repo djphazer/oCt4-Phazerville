@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef OCT4_SYSTEM_H_
-#define OCT4_SYSTEM_H_
+#pragma once
 
 #include "api/api_processor.h"
 #include "drivers/dac8565.h"
@@ -97,5 +96,3 @@ extern weegfx::Graphics graphics;
   }                         \
   }                         \
   while (0)
-
-#endif  // OCT4_SYSTEM_H_

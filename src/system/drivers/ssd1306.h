@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef DRIVERS_SSD1306_H_
-#define DRIVERS_SSD1306_H_
+#pragma once
 
 #include <stdint.h>
 
@@ -100,5 +99,3 @@ static const uint8_t startup_sequence[] = {
     SET_DISPLAY_ON,
 };
 }  // namespace SSD1306
-
-#endif  // DRIVERS_SSD1306_H_

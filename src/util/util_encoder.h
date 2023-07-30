@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef UTIL_ENCODER_H_
-#define UTIL_ENCODER_H_
+#pragma once
 
 #include <cstdint>
 
@@ -106,5 +105,3 @@ private:
 };
 
 };  // namespace util
-
-#endif  // UTIL_ENCODER_H_

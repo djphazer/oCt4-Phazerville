@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef BUILTIN_NULLPROC_H_
-#define BUILTIN_NULLPROC_H_
+#pragma once
 
 #include "api/api_processor.h"
 
@@ -31,5 +30,3 @@ public:
 };
 
 }  // namespace oct4
-
-#endif  // BUILTIN_NULLPROC_H_

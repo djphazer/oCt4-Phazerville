@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef HWTEST_TRX_H_
-#define HWTEST_TRX_H_
+#pragma once
 
 #include "builtin/hwtest_plugin.h"
 
@@ -46,5 +45,3 @@ public:
   }
 };
 }  // namespace oct4
-
-#endif  // HWTEST_TRX_H_

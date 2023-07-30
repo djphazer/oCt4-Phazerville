@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef API_PROCESSOR_H_
-#define API_PROCESSOR_H_
+#pragma once
 
 #include <array>
 #include <cstdint>
@@ -57,5 +56,3 @@ public:
 
 }  // namespace api
 }  // namespace oct4
-
-#endif  // API_PROCESSOR_H_

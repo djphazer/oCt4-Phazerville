@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef BUILTIN_HWTEST_H_
-#define BUILTIN_HWTEST_H_
+#pragma once
 
 #include "api/api_menu.h"
 #include "api/api_processor.h"
@@ -57,5 +56,3 @@ protected:
 };
 
 }  // namespace oct4
-
-#endif  // BUILTIN_HWTEST_H_

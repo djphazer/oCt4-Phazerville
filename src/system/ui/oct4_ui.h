@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef OCT4_UI_H_
-#define OCT4_UI_H_
+#pragma once
 
 #include "api/api_menu.h"
 #include "system/oct4_controls.h"
@@ -88,5 +87,3 @@ private:
 
 }  // namespace UI
 }  // namespace oct4
-
-#endif  // OCT4_UI_H_
