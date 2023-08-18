@@ -20,13 +20,12 @@
  */
 #include "phazerville.h"
 
-namespace oct4 {
 namespace phz {
 
 static PhazervilleApp instance;
 
-static api::Processor::ProcRegistrar<PhazervilleApp> register_proc(&instance);
-static api::Menu::MenuRegistrar<PhazervilleApp> register_menu(&instance);
+static oct4::api::Processor::ProcRegistrar<PhazervilleApp> register_proc(&instance);
+static oct4::api::Menu::MenuRegistrar<PhazervilleApp> register_menu(&instance);
 
 // core processing logic
 void PhazervilleApp::Process(uint32_t ticks, const api::Processor::Inputs &inputs, api::Processor::Outputs &outputs) 
@@ -63,7 +62,7 @@ void PhazervilleApp::Draw(weegfx::Graphics &gfx) const
     gfx.drawLine(0, 10, 62, 10);
     gfx.drawLine(0, 11, 62, 11);
 
+    // TODO: call applet Views
 }
 
 }  // namespace phz
-}  // namespace oct4

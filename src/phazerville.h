@@ -15,13 +15,17 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
+
+#include <cstdint>
 #include "api/api_processor.h"
 #include "api/api_menu.h"
 #include "system/ui/ui_event_dispatcher.h"
-#include "hemisphere.h"
+#include "hem/hemisphere.h"
 
-namespace oct4 {
 namespace phz {
+
+using namespace oct4;
+uint32_t ticks_ = 0;
 
 class PhazervilleApp : public api::Processor, public api::Menu, public UI::EventDispatch<PhazervilleApp> {
 public:
@@ -49,10 +53,8 @@ protected:
   //EVENT_DISPATCH_DECLARE_HANDLER(evButtonUp);
 
 private:
-  uint32_t ticks_ = 0;
   int state_ = 0;
 
 };
 
 }  // namespace phz
-}  // namespace oct4

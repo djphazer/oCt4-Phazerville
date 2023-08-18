@@ -31,9 +31,9 @@
 // codebook. This significantly reduces the amount of memory required.
 // Furthermore, it enables changing the configuration on the fly.
 
-#ifndef BRAIDS_QUANTIZER_H_
-#define BRAIDS_QUANTIZER_H_
+#pragma once
 
+#include <cstddef>
 #include "util/util_macros.h"
 
 namespace braids {
@@ -95,5 +95,3 @@ class Quantizer {
 };
 
 }  // namespace braids
-
-#endif

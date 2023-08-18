@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdint>
 #include "braids_quantizer.h"
+#include "braids_quantizer_scales.h"
+#include "bjorklund.h"
 
 // stinkin macros
 #define LEFT_HEMISPHERE 0
@@ -68,6 +70,7 @@ class HemisphereApplet {
   enum ModalEditMode {
     LEGACY = 0, MODAL, MODAL_WRAP, LAST
   };
+  enum Side { LEFT, RIGHT };
   
   int cursor_ = 0;
   bool isEditing = 0;

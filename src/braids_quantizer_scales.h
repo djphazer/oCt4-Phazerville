@@ -26,8 +26,7 @@
 //
 // Quantizer scales
 
-#ifndef BRAIDS_QUANTIZER_SCALES_H_
-#define BRAIDS_QUANTIZER_SCALES_H_
+#pragma once
 
 #include "braids_quantizer.h"
 
@@ -336,5 +335,3 @@ const Scale scales[] = {
 
   } ;
 }// namespace braids
-
-#endif  // BRAIDS_QUANTIZER_SCALES_H_
