@@ -20,6 +20,8 @@
  */
 #include "phazerville.h"
 
+#include "applets/AttenuateOffset.h"
+
 namespace phz {
 
 static PhazervilleApp instance;
@@ -58,7 +60,7 @@ void PhazervilleApp::HandleEvent(const UI::Event &event)
 void PhazervilleApp::Draw(weegfx::Graphics &gfx) const
 {
     gfx.setPrintPos(1, 2);
-    gfx.print("Phazerville Suite T4 Test");
+    gfx.print("Phazerville T4 Test");
     gfx.drawLine(0, 10, 62, 10);
     gfx.drawLine(0, 11, 62, 11);
 

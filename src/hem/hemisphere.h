@@ -38,7 +38,7 @@ HEMISPHERE_HELP_CVS = 1,
 HEMISPHERE_HELP_OUTS = 2,
 HEMISPHERE_HELP_ENCODER = 3
 };
-const char * HEM_HELP_SECTION_NAMES[4] = {"Dig", "CV", "Out", "Enc"};
+const char * const HEM_HELP_SECTION_NAMES[4] = {"Dig", "CV", "Out", "Enc"};
 
 // Simulated fixed floats by multiplying and dividing by powers of 2
 #ifndef int2simfloat
@@ -65,7 +65,24 @@ typedef int32_t simfloat;
 #define HEMISPHERE_PULSE_ANIMATION_TIME 500
 #define HEMISPHERE_PULSE_ANIMATION_TIME_LONG 1200
 
-// ok, ok; this actually just needs to be a HemisphereApplet class interface
+class HemisphereApplet;
+
+// actual applet API
+class Applet : public util::StaticTypeRegistry<Applet, 32> {
+    constexpr util::FourCC::value_type id;
+    const char * name;
+    HemisphereApplet &applet;
+
+    template <typename T>
+    using AppletRegistrar = util::StaticTypeRegistry<Applet, 32>::Registrar<T>;
+};
+
+#define DECLARE_APPLET(id, name, clazz) \
+    static clazz clazz##_instance; \
+    Applet::AppletRegistrar<clazz> register_applet( Applet { id, name, &clazz##_instance } )
+
+#include "hemisphere_config.h"
+
 class HemisphereApplet {
   enum ModalEditMode {
     LEGACY = 0, MODAL, MODAL_WRAP, LAST
