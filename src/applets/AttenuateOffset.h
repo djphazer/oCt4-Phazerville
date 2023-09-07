@@ -23,7 +23,7 @@
 
 class AttenuateOffset : public HemisphereApplet {
 
-    static const char * const help[4] = {
+    static constexpr char * const help[4] = {
     //  "------------------" <-- Size Guide
         "2=Mix A&B",
         "CV Inputs 1,2",
@@ -62,7 +62,7 @@ class AttenuateOffset : public HemisphereApplet {
     }
 
     void View() {
-        gfxHeader(applet_name());
+        //gfxHeader(applet_name());
         DrawInterface();
     }
 

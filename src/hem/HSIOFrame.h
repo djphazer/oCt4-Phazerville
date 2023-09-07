@@ -9,11 +9,12 @@
 
 #pragma once
 
-#include "HSMIDI.h"
+// #include "HSMIDI.h"
 
 namespace HS {
 
-extern uint32_t ticks_;
+braids::Quantizer quantizer[4]; // global shared quantizers
+uint8_t trig_length = 2; // multiplier for HEMISPHERE_CLOCK_TICKS
 
 typedef struct MIDILogEntry {
     int message;
@@ -24,7 +25,6 @@ typedef struct MIDILogEntry {
 // shared IO Frame, updated every tick
 // this will allow chaining applets together, multiple stages of processing
 typedef struct IOFrame {
-    uint8_t trig_length = 2; // multiplier for HEMISPHERE_CLOCK_TICKS
     bool clocked[4];
     bool gate_high[4];
     int inputs[4];
@@ -69,8 +69,9 @@ typedef struct IOFrame {
                 }
                 log_index--;
             }
-            last_msg_tick = HS::ticks_;
+            //last_msg_tick = HS::ticks_;
         }
+        /*
         void ProcessMIDIMsg(const int midi_chan, const int message, const int data1, const int data2) {
             switch (message) {
             case usbMIDI.Clock:
@@ -189,6 +190,7 @@ typedef struct IOFrame {
                 if (log_this) UpdateLog(message, data1, data2);
             }
         }
+        */
 
     } MIDIState;
 
@@ -196,8 +198,8 @@ typedef struct IOFrame {
     void Out(int channel, int value) {
         outputs[channel] = value;
     }
-    void ClockOut(int ch, const int pulselength) {
-        clock_countdown[ch] = pulselength * HEMISPHERE_CLOCK_TICKS;
+    void ClockOut(int ch, const int pulselength = HEMISPHERE_CLOCK_TICKS * HS::trig_length) {
+        clock_countdown[ch] = pulselength;
         outputs[ch] = PULSE_VOLTAGE * (12 << 7);
     }
     void Tick() {
@@ -212,6 +214,14 @@ typedef struct IOFrame {
                 if (--clock_countdown[i] == 0) outputs[i] = 0;
             }
         }
+
+        /* TODO:
+        ForEachChannel(ch) {
+            // Cursor countdowns. See CursorBlink(), ResetCursor(), gfxCursor()
+            if (--HemisphereApplet::cursor_countdown[ch] < -HEMISPHERE_CURSOR_TICKS)
+                HemisphereApplet::cursor_countdown[ch] = HEMISPHERE_CURSOR_TICKS;
+        }
+        */
     }
 
     // TODO: Hardware IO should be extracted

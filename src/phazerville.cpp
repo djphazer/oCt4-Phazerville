@@ -26,14 +26,13 @@ namespace phz {
 
 static PhazervilleApp instance;
 
-static oct4::api::Processor::ProcRegistrar<PhazervilleApp> register_proc(&instance);
-static oct4::api::Menu::MenuRegistrar<PhazervilleApp> register_menu(&instance);
+oct4::api::Processor::ProcRegistrar<PhazervilleApp> register_proc(&instance);
+oct4::api::Menu::MenuRegistrar<PhazervilleApp> register_menu(&instance);
 
 // core processing logic
 void PhazervilleApp::Process(uint32_t ticks, const api::Processor::Inputs &inputs, api::Processor::Outputs &outputs) 
 {
   HS::ticks_ = ticks;
-  Applet *my_applet = HS::selected_applet[0];
 
   // --- Load IOFrame inputs
   ForAllChannels(i) {
@@ -44,6 +43,7 @@ void PhazervilleApp::Process(uint32_t ticks, const api::Processor::Inputs &input
   HS::frame.Tick(); // takes care of dynamic things
 
   // --- Applet processing
+  //Applet *my_applet = HS::selected_applet[0];
 
   // --- Send IOFrame outputs
   ForAllChannels(i) {

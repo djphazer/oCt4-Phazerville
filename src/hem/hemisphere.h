@@ -109,10 +109,15 @@ public:
   bool hemisphere;
 
   static int cursor_countdown[2];
+  static weegfx::Graphics &graphics;
 
   // helper functions
-  void ResetCursor(int n = 0) {
-    cursor_countdown[n] = HEMISPHERE_CURSOR_TICKS;
+  void ResetCursor() {
+    cursor_countdown[hemisphere] = HEMISPHERE_CURSOR_TICKS;
+  }
+  /* Check cursor blink cycle. */
+  bool CursorBlink() {
+      return (cursor_countdown[hemisphere] > 0);
   }
 
   // handle modal edit mode toggle or cursor advance
@@ -159,7 +164,7 @@ public:
   }
 
   braids::Quantizer* GetQuantizer(int ch) {
-      return &HS::frame.quantizer[io_offset + ch];
+      return &HS::quantizer[io_offset + ch];
   }
 
   // Standard bi-polar CV modulation scenario
@@ -170,11 +175,11 @@ public:
   }
 
   void Out(int ch, int value, int octave = 0) {
-      frame.Out( (DAC_CHANNEL)(ch + io_offset), value + (octave * (12 << 7)));
+      frame.Out( ch + io_offset, value + (octave * (12 << 7)));
   }
 
   void SmoothedOut(int ch, int value, int kSmoothing) {
-      DAC_CHANNEL channel = (DAC_CHANNEL)(ch + io_offset);
+      int channel = ch + io_offset;
       value = (frame.outputs_smooth[channel] * (kSmoothing - 1) + value) / kSmoothing;
       frame.outputs[channel] = frame.outputs_smooth[channel] = value;
   }
@@ -187,17 +192,16 @@ public:
    */
   bool Clock(int ch, bool physical = 0) {
       bool clocked = 0;
-      ClockManager *clock_m = clock_m->get();
-      bool useTock = (!physical && clock_m->IsRunning());
+      bool useTock = (!physical && clock_m.IsRunning());
 
       // clock triggers
-      if (useTock && clock_m->GetMultiply(ch + io_offset) != 0)
-          clocked = clock_m->Tock(ch + io_offset);
+      if (useTock && clock_m.GetMultiply(ch + io_offset) != 0)
+          clocked = clock_m.Tock(ch + io_offset);
       else
           clocked = frame.clocked[ch + io_offset];
 
       // Try to eat a boop
-      clocked = clocked || clock_m->Beep(io_offset + ch);
+      clocked = clocked || clock_m.Beep(io_offset + ch);
 
       if (clocked) {
           frame.cycle_ticks[io_offset + ch] = HS::ticks_ - frame.last_clock[io_offset + ch];
@@ -207,7 +211,7 @@ public:
   }
 
   void ClockOut(const int ch) {
-      frame.ClockOut( (DAC_CHANNEL)(io_offset + ch) );
+      frame.ClockOut( io_offset + ch );
   }
 
   bool Gate(int ch) {
@@ -303,6 +307,7 @@ public:
       graphics.drawLine(x + gfx_offset, y, x2 + gfx_offset, y2);
   }
 
+  /*
   void gfxLine(int x, int y, int x2, int y2, bool dotted) {
       graphics.drawLine(x + gfx_offset, y, x2 + gfx_offset, y2, dotted ? 2 : 1);
   }
@@ -310,6 +315,7 @@ public:
   void gfxDottedLine(int x, int y, int x2, int y2, uint8_t p = 2) {
       graphics.drawLine(x + gfx_offset, y, x2 + gfx_offset, y2, p);
   }
+  */
 
   void gfxCircle(int x, int y, int r) {
       graphics.drawCircle(x + gfx_offset, y, r);

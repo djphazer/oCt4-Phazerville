@@ -246,7 +246,7 @@ public:
 
     bool EndOfBeat(int ch = 0) {return counter[ch] == 1;}
 
-    bool Cycle(int ch = 0) {return cycle;}
+    bool Cycle() {return cycle;}
 };
 
-static HS::ClockManager clock_m;
+static ClockManager clock_m;
