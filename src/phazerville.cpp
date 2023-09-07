@@ -20,7 +20,7 @@
  */
 #include "phazerville.h"
 
-#include "applets/AttenuateOffset.h"
+#include "hem/hemisphere_config.h"
 
 namespace phz {
 
@@ -32,13 +32,31 @@ static oct4::api::Menu::MenuRegistrar<PhazervilleApp> register_menu(&instance);
 // core processing logic
 void PhazervilleApp::Process(uint32_t ticks, const api::Processor::Inputs &inputs, api::Processor::Outputs &outputs) 
 {
-  (void)ticks;
+  HS::ticks_ = ticks;
+  Applet *my_applet = HS::selected_applet[0];
 
-  // sum all inputs to output D
+  // --- Load IOFrame inputs
+  ForAllChannels(i) {
+    HS::frame.gate_high[i] = inputs.digital_inputs[i].raw;
+    HS::frame.clocked[i] = inputs.digital_inputs[i].flags;
+    HS::frame.inputs[i] = inputs.analog_inputs[i];
+  }
+  HS::frame.Tick(); // takes care of dynamic things
+
+  // --- Applet processing
+
+  // --- Send IOFrame outputs
+  ForAllChannels(i) {
+    outputs.dac[i] = HS::frame.outputs[i];
+  }
+
+  /* DEMO: sum all inputs to output D
+   *
   outputs.dac[3] = 0;
   for (auto v : inputs.analog_inputs) {
     outputs.dac[3] += v;
   }
+  */
 }
 
 // App activation / suspension ?

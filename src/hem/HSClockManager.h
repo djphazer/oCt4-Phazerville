@@ -63,11 +63,11 @@ class ClockManager {
 
     bool boop[4] = {0,0,0,0}; // Manual triggers
 
+public:
     ClockManager() {
         SetTempoBPM(120);
     }
 
-public:
     void SetMultiply(int multiply, int ch = 0) {
         multiply = constrain(multiply, CLOCK_MIN_MULTIPLE, CLOCK_MAX_MULTIPLE);
         tocks_per_beat[ch] = multiply;
@@ -249,4 +249,4 @@ public:
     bool Cycle(int ch = 0) {return cycle;}
 };
 
-ClockManager clock_m;
+static HS::ClockManager clock_m;

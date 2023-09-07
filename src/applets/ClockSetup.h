@@ -155,7 +155,7 @@ public:
 
         // other config settings are kept here as well, it's convenient
         Pack(data, PackLocation { 50, 2 }, HemisphereApplet::modal_edit_mode);
-        Pack(data, PackLocation { 52, 7 }, HemisphereApplet::trig_length);
+        Pack(data, PackLocation { 52, 7 }, HS::frame.trig_length);
 
         return data;
     }
@@ -176,7 +176,7 @@ public:
         }
 
         HemisphereApplet::modal_edit_mode = Unpack(data, PackLocation { 50, 2 });
-        HemisphereApplet::trig_length = constrain( Unpack(data, PackLocation { 52, 7 }), 1, 127);
+        HS::frame.trig_length = constrain( Unpack(data, PackLocation { 52, 7 }), 1, 127);
     }
 
 protected:

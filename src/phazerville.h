@@ -42,7 +42,7 @@ public:
   // MENU
   util::FourCC menu_type() const final { return {fourcc}; }
     // increment timers and such here
-  void Tick() final { ++ticks_; }
+  void Tick() final { ++ticks_; ++HS::ticks_; }
 
   void HandleMenuEvent(api::MenuEvent menu_event) final;
   void HandleEvent(const UI::Event &event) final;
