@@ -72,17 +72,39 @@ void PhazervilleApp::HandleMenuEvent(api::MenuEvent menu_event)
 void PhazervilleApp::HandleEvent(const UI::Event &event)
 {
     (void)event;
+
+    // keepin it simple
+    switch (event.type) {
+        case UI::EVENT_BUTTON_PRESS:
+            if (event.control & (UI::CONTROL_BUTTON_R || UI::CONTROL_BUTTON_L) )
+                AttenuateOffset_instance.OnButtonPress();
+            break;
+        case UI::EVENT_ENCODER:
+            AttenuateOffset_instance.OnEncoderMove(event.value);
+            break;
+        default: break;
+    }
+    /*
+    {UI::EVENT_BUTTON_PRESS, UI::CONTROL_BUTTON_UP, &HWTestApp::evButtonUp},
+    {UI::EVENT_BUTTON_PRESS, UI::CONTROL_BUTTON_DOWN, &HWTestApp::evButtonDown},
+    {UI::EVENT_BUTTON_PRESS, UI::CONTROL_BUTTON_R, &HWTestApp::evButtonR},
+    {UI::EVENT_ENCODER, UI::CONTROL_ENCODER_L, &HWTestApp::evEncoderL},
+    {UI::EVENT_ENCODER, UI::CONTROL_ENCODER_R, &HWTestApp::evEncoderR},
+    */
 }
 
 // graphics
 void PhazervilleApp::Draw(weegfx::Graphics &gfx) const
 {
+    if (!HemisphereApplet::graphics) HemisphereApplet::graphics = &gfx;
+
     gfx.setPrintPos(1, 2);
     gfx.print("Phazerville T4 Test");
     gfx.drawLine(0, 10, 62, 10);
     gfx.drawLine(0, 11, 62, 11);
 
     // TODO: call applet Views
+    AttenuateOffset_instance.View();
 }
 
 }  // namespace phz

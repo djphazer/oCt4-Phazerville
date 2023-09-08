@@ -110,7 +110,7 @@ public:
   bool hemisphere;
 
   static int cursor_countdown[2];
-  static weegfx::Graphics &graphics;
+  static weegfx::Graphics *graphics;
 
   // helper functions
   void ResetCursor() {
@@ -247,17 +247,17 @@ public:
   }
 
   void gfxPos(int x, int y) {
-      graphics.setPrintPos(x + gfx_offset, y);
+      graphics->setPrintPos(x + gfx_offset, y);
   }
 
   void gfxPrint(int x, int y, const char *str) {
-      graphics.setPrintPos(x + gfx_offset, y);
-      graphics.print(str);
+      graphics->setPrintPos(x + gfx_offset, y);
+      graphics->print(str);
   }
 
   void gfxPrint(int x, int y, int num) {
-      graphics.setPrintPos(x + gfx_offset, y);
-      graphics.print(num);
+      graphics->setPrintPos(x + gfx_offset, y);
+      graphics->print(num);
   }
 
   void gfxPrint(int x_adv, int num) { // Print number with character padding
@@ -266,11 +266,11 @@ public:
   }
 
   void gfxPrint(const char *str) {
-      graphics.print(str);
+      graphics->print(str);
   }
 
   void gfxPrint(int num) {
-      graphics.print(num);
+      graphics->print(num);
   }
 
   /* Convert CV value to voltage level and print  to two decimal places */
@@ -289,41 +289,41 @@ public:
   }
 
   void gfxPixel(int x, int y) {
-      graphics.setPixel(x + gfx_offset, y);
+      graphics->setPixel(x + gfx_offset, y);
   }
 
   void gfxFrame(int x, int y, int w, int h) {
-      graphics.drawFrame(x + gfx_offset, y, w, h);
+      graphics->drawFrame(x + gfx_offset, y, w, h);
   }
 
   void gfxRect(int x, int y, int w, int h) {
-      graphics.drawRect(x + gfx_offset, y, w, h);
+      graphics->drawRect(x + gfx_offset, y, w, h);
   }
 
   void gfxInvert(int x, int y, int w, int h) {
-      graphics.invertRect(x + gfx_offset, y, w, h);
+      graphics->invertRect(x + gfx_offset, y, w, h);
   }
 
   void gfxLine(int x, int y, int x2, int y2) {
-      graphics.drawLine(x + gfx_offset, y, x2 + gfx_offset, y2);
+      graphics->drawLine(x + gfx_offset, y, x2 + gfx_offset, y2);
   }
 
   /*
   void gfxLine(int x, int y, int x2, int y2, bool dotted) {
-      graphics.drawLine(x + gfx_offset, y, x2 + gfx_offset, y2, dotted ? 2 : 1);
+      graphics->drawLine(x + gfx_offset, y, x2 + gfx_offset, y2, dotted ? 2 : 1);
   }
 
   void gfxDottedLine(int x, int y, int x2, int y2, uint8_t p = 2) {
-      graphics.drawLine(x + gfx_offset, y, x2 + gfx_offset, y2, p);
+      graphics->drawLine(x + gfx_offset, y, x2 + gfx_offset, y2, p);
   }
   */
 
   void gfxCircle(int x, int y, int r) {
-      graphics.drawCircle(x + gfx_offset, y, r);
+      graphics->drawCircle(x + gfx_offset, y, r);
   }
 
   void gfxBitmap(int x, int y, int w, const uint8_t *data) {
-      graphics.drawBitmap8(x + gfx_offset, y, w, data);
+      graphics->drawBitmap8(x + gfx_offset, y, w, data);
   }
 
   void gfxIcon(int x, int y, const uint8_t *data) {
@@ -363,3 +363,5 @@ public:
 
 };
 
+weegfx::Graphics *HemisphereApplet::graphics = 0;
+int HemisphereApplet::cursor_countdown[2] = {0,0};
