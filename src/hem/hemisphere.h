@@ -109,16 +109,15 @@ public:
   bool isEditing = 0;
   bool hemisphere;
 
-  static int cursor_countdown[2];
   static weegfx::Graphics *graphics;
 
   // helper functions
   void ResetCursor() {
-    cursor_countdown[hemisphere] = HEMISPHERE_CURSOR_TICKS;
+      HS::cursor_countdown[hemisphere] = HEMISPHERE_CURSOR_TICKS;
   }
   /* Check cursor blink cycle. */
   bool CursorBlink() {
-      return (cursor_countdown[hemisphere] > 0);
+      return (HS::cursor_countdown[hemisphere] > 0);
   }
 
   // handle modal edit mode toggle or cursor advance
@@ -364,4 +363,3 @@ public:
 };
 
 weegfx::Graphics *HemisphereApplet::graphics = 0;
-int HemisphereApplet::cursor_countdown[2] = {0,0};

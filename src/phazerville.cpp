@@ -71,12 +71,10 @@ void PhazervilleApp::HandleMenuEvent(api::MenuEvent menu_event)
 // button/encoder actions
 void PhazervilleApp::HandleEvent(const UI::Event &event)
 {
-    (void)event;
-
     // keepin it simple
     switch (event.type) {
         case UI::EVENT_BUTTON_PRESS:
-            if (event.control & (UI::CONTROL_BUTTON_R || UI::CONTROL_BUTTON_L) )
+            if (event.control == UI::CONTROL_BUTTON_R )
                 AttenuateOffset_instance.OnButtonPress();
             break;
         case UI::EVENT_ENCODER:
@@ -105,6 +103,24 @@ void PhazervilleApp::Draw(weegfx::Graphics &gfx) const
 
     // TODO: call applet Views
     AttenuateOffset_instance.View();
+
+    gfx.drawVLine(64, 15, 48);
+
+    weegfx::coord_t y = 15;
+    int i = 0;
+    for (auto v : HS::frame.inputs) {
+      gfx.setPrintPos(65, y);
+      gfx.printf("CV%d ", i);
+      gfx.printf("%4u", v);
+
+      /*
+      gfx.setPrintPos(x, 32);
+      gfx.printf("%04x", v);
+      */
+
+      ++i;
+      y += 10;
+    }
 }
 
 }  // namespace phz

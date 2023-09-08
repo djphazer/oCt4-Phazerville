@@ -15,6 +15,7 @@ namespace HS {
 
 braids::Quantizer quantizer[4]; // global shared quantizers
 uint8_t trig_length = 2; // multiplier for HEMISPHERE_CLOCK_TICKS
+int cursor_countdown[2] = {0,0};
 
 typedef struct MIDILogEntry {
     int message;
@@ -24,7 +25,7 @@ typedef struct MIDILogEntry {
 
 // shared IO Frame, updated every tick
 // this will allow chaining applets together, multiple stages of processing
-typedef struct IOFrame {
+struct IOFrame {
     bool clocked[4];
     bool gate_high[4];
     int inputs[4];
@@ -215,13 +216,11 @@ typedef struct IOFrame {
             }
         }
 
-        /* TODO:
         ForEachChannel(ch) {
             // Cursor countdowns. See CursorBlink(), ResetCursor(), gfxCursor()
-            if (--HemisphereApplet::cursor_countdown[ch] < -HEMISPHERE_CURSOR_TICKS)
-                HemisphereApplet::cursor_countdown[ch] = HEMISPHERE_CURSOR_TICKS;
+            if (--cursor_countdown[ch] < -HEMISPHERE_CURSOR_TICKS)
+                cursor_countdown[ch] = HEMISPHERE_CURSOR_TICKS;
         }
-        */
     }
 
     // TODO: Hardware IO should be extracted
@@ -249,7 +248,7 @@ typedef struct IOFrame {
     }
     */
 
-} IOFrame;
+};
 
 //////////////// Calculation methods
 ////////////////////////////////////////////////////////////////////////////////

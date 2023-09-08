@@ -23,6 +23,7 @@
 
 class AttenuateOffset : public HemisphereApplet {
 public:
+
     static const util::FourCC::value_type fourcc = "ATTO"_4CCV;
     static constexpr char * const help[4] = {
     //  "------------------" <-- Size Guide
@@ -37,20 +38,20 @@ public:
     int level[2];
     int offset[2];
     bool mix = false;
-    bool mix_final = false;
+    bool mix_gated = false;
 
-    void Start() {
+    AttenuateOffset() {
         ForEachChannel(ch) level[ch] = ATTENOFF_MAX_LEVEL;
     }
 
     void Controller() {
-        mix_final = mix || Gate(1);
+        mix_gated = mix || Gate(1);
         int prevSignal = 0;
 
         ForEachChannel(ch)
         {
             int signal = Proportion(level[ch], ATTENOFF_MAX_LEVEL, In(ch)) + (offset[ch] * ATTENOFF_INCREMENTS);
-            if (ch == 1 && mix_final) {
+            if (ch == 1 && mix_gated) {
                 signal = signal + prevSignal;
             }
 
@@ -124,7 +125,7 @@ public:
             gfxPrint("%");
         }
 
-        if (mix_final) {
+        if (mix_gated) {
             gfxIcon(1, 25, DOWN_ICON);
         }
 
