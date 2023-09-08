@@ -70,7 +70,7 @@ class HemisphereApplet;
 
 // actual applet API
 typedef struct Applet {
-    util::FourCC::value_type fourcc;
+    int id;
     const char * name;
     HemisphereApplet * applet;
 } Applet;
@@ -95,15 +95,16 @@ using AppletRegistrar = util::StaticTypeRegistry<Applet, 32>::Registrar<T>;
 
 #define DECLARE_APPLET(id, name, clazz) \
     clazz clazz ## _instance; \
-    Applet clazz ## _applet = { id, name, &clazz ## _instance }; \
-    AppletRegistrar<Applet> register_applet( &clazz ## _applet )
+    Applet clazz ## _applet = { id, name, &clazz ## _instance };
+    
+//AppletRegistrar<Applet> register_applet( &clazz ## _applet )
 
 using namespace HS;
 
 class HemisphereApplet {
 public:
   enum Side { LEFT, RIGHT };
-  
+
   int cursor_ = 0;
   bool isEditing = 0;
   bool hemisphere;

@@ -43,7 +43,7 @@ void PhazervilleApp::Process(uint32_t ticks, const api::Processor::Inputs &input
   HS::frame.Tick(); // takes care of dynamic things
 
   // --- Applet processing
-  //Applet *my_applet = HS::selected_applet[0];
+  AttenuateOffset_instance.Controller();
 
   // --- Send IOFrame outputs
   ForAllChannels(i) {

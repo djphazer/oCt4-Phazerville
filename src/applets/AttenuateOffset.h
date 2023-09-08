@@ -22,7 +22,8 @@
 #define ATTENOFF_MAX_LEVEL 63
 
 class AttenuateOffset : public HemisphereApplet {
-
+public:
+    static const util::FourCC::value_type fourcc = "ATTO"_4CCV;
     static constexpr char * const help[4] = {
     //  "------------------" <-- Size Guide
         "2=Mix A&B",
@@ -138,5 +139,5 @@ class AttenuateOffset : public HemisphereApplet {
 
 };
 
-DECLARE_APPLET( "AtOf"_4CCV, "AttenOff", AttenuateOffset );
+DECLARE_APPLET( 0x0001, "AttenOff", AttenuateOffset );
 
