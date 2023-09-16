@@ -72,7 +72,7 @@ class HemisphereApplet;
 typedef struct Applet {
     int id;
     const char * name;
-    HemisphereApplet * applet;
+    HemisphereApplet * applet[2];
 } Applet;
 
 #include "hem/HSIOFrame.h"
@@ -94,8 +94,9 @@ template <typename T>
 using AppletRegistrar = util::StaticTypeRegistry<Applet, 32>::Registrar<T>;
 
 #define DECLARE_APPLET(id, name, clazz) \
-    clazz clazz ## _instance; \
-    Applet clazz ## _applet = { id, name, &clazz ## _instance };
+    clazz clazz ## _left(HemisphereApplet::LEFT); \
+    clazz clazz ## _right(HemisphereApplet::RIGHT); \
+    Applet clazz ## _applet = { id, name, { &clazz ## _left, &clazz ## _right } };
     
 //AppletRegistrar<Applet> register_applet( &clazz ## _applet )
 
@@ -103,13 +104,17 @@ using namespace HS;
 
 class HemisphereApplet {
 public:
-  enum Side { LEFT, RIGHT };
+  enum Side { LEFT = 0, RIGHT = 1 };
 
   int cursor_ = 0;
   bool isEditing = 0;
-  bool hemisphere;
+  bool hemisphere = 0;
 
   static weegfx::Graphics *graphics;
+
+  HemisphereApplet(Side h_ = LEFT) : hemisphere{ h_ }
+  {
+  }
 
   // helper functions
   void ResetCursor() {

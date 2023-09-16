@@ -20,6 +20,7 @@
 #include "api/api_processor.h"
 #include "api/api_menu.h"
 #include "system/ui/ui_event_dispatcher.h"
+#include "system/oct4_system_core.h"
 #include "hem/hemisphere.h"
 
 namespace phz {

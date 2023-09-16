@@ -40,7 +40,8 @@ public:
     bool mix = false;
     bool mix_gated = false;
 
-    AttenuateOffset() {
+    AttenuateOffset(Side h_) : HemisphereApplet(h_)
+    {
         ForEachChannel(ch) level[ch] = ATTENOFF_MAX_LEVEL;
     }
 
